@@ -1,7 +1,7 @@
 {
-  "name": "@dyte-in/bhasa-transcription",
+  "name": "@dyte-in/Bhasa-transcription",
   "version": "2.0.0",
-  "description": "Audio middleware to generate transcriptions using bhasa.ai APIs",
+  "description": "Audio middleware to generate transcriptions using Bhasa.io APIs",
   "types": "./types/index.d.ts",
   "main": "./dist/index.cjs.js",
   "browser": "./dist/index.umd.js",
@@ -13,19 +13,6 @@
       "types": "./types/index.d.ts"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dyte-in/bhasa-transcription.git"
-  },
-  "bugs": {
-    "url": "https://community.dyte.io"
-  },
-  "publishConfig": {
-    "access": "public",
-    "tag": "latest"
-  },
-  "author": "",
-  "license": "ISC",
   "scripts": {
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --ext .js --fix",

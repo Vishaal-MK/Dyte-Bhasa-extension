@@ -1,5 +1,4 @@
 import DyteClient from '@dytesdk/web-core/types/client/DyteClient';
-import { BroadcastMessagePayload } from '@dytesdk/web-core/types/client/DyteParticipants';
 export interface ActivateTranscriptionsConfig {
     meeting: DyteClient;
     bhasaAccessToken: string;
@@ -10,8 +9,7 @@ export interface DeactivateTranscriptionsConfig {
 }
 export interface AddTranscriptionsListenerConfig {
     meeting: DyteClient;
-    noOfTranscriptionsToCache?: number;
-    transcriptionsCallback: (allFormattedTranscriptions: BroadcastMessagePayload[]) => void;
+    transcriptionsCallback: (allFormattedTranscriptions: string) => void;
 }
 export interface RemoveTranscriptionsListenerConfig {
     meeting: DyteClient;

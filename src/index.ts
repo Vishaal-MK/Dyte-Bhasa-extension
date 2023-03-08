@@ -1,6 +1,5 @@
 import * as TranscriptionListenerHelpers from './transcripts_listener';
-import * as bhasaTranscriptionsHelpers from './bhasa_transcriptions';
-import * as BuildingBlockHelpers from './transcriptions_building_blocks';
+import * as SymblTranscriptionsHelpers from './bhasa_transcriptions';
 import {
     ActivateTranscriptionsConfig,
     DeactivateTranscriptionsConfig,
@@ -13,16 +12,19 @@ async function activateTranscriptions(param: ActivateTranscriptionsConfig) {
         throw new Error('arguments[0].meeting.self is not available. Did you miss calling new DyteClient first?');
     }
     if (!param?.bhasaAccessToken) {
-        throw new Error('Missing arguments[0].bhasaAccessToken. We need bhasa access token to retrive conversations and to generate transcriptions');
+        throw new Error('Missing arguments[0].bhasaAccessToken. We need Bhasa access token to retrive conversations and to generate transcriptions');
     }
-    return bhasaTranscriptionsHelpers.activateTranscriptions(param);
+    if (!param?.languageCode) {
+        throw new Error('language code is missing');
+    }
+    return SymblTranscriptionsHelpers.activateTranscriptions(param);
 }
 
 async function deactivateTranscriptions(param: DeactivateTranscriptionsConfig) {
     if (!param.meeting?.self) {
         throw new Error('arguments[0].meeting.self is not available. Did you miss calling new DyteClient first?');
     }
-    return bhasaTranscriptionsHelpers.deactivateTranscriptions(param);
+    return SymblTranscriptionsHelpers.deactivateTranscriptions(param);
 }
 
 async function addTranscriptionsListerner(param: AddTranscriptionsListenerConfig) {
@@ -42,14 +44,12 @@ async function removeTranscriptionsListener(param: RemoveTranscriptionsListenerC
     return TranscriptionListenerHelpers.removeTranscriptionsListener(param);
 }
 
-function getTranscriptions() {
-    return BuildingBlockHelpers.getTranscriptions();
-}
+
 
 export {
     activateTranscriptions,
     deactivateTranscriptions,
     addTranscriptionsListerner,
     removeTranscriptionsListener,
-    getTranscriptions,
+
 };
